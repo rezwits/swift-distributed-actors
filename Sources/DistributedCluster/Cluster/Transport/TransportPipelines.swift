@@ -338,9 +338,9 @@ final class OutboundSerializationHandler: ChannelOutboundHandler {
                 self.log.error(
                     "Serialization of outgoing message failed: \(error)",
                     metadata: [
-                        "message": "\(transportEnvelope.underlyingMessage)",
-                        "message/type": "\(reflecting: type(of: transportEnvelope.underlyingMessage as Any))",
-                        "recipient": "\(transportEnvelope.recipient)",
+                        "message": .string("\(transportEnvelope.underlyingMessage)"),
+                        "message/type": .string("\(reflecting: type(of: transportEnvelope.underlyingMessage as Any))"),
+                        "recipient": .string("\(transportEnvelope.recipient)"),
                     ]
                 )
                 // TODO: drop message when it fails to be serialized?

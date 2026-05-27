@@ -169,4 +169,8 @@ internal distributed actor DowningStrategyShell {
     func metadata(_ additional: Logger.Metadata) -> Logger.Metadata {
         self.metadata.merging(additional, uniquingKeysWith: { _, r in r })
     }
+
+    func metadata(_ additional: [String: Any]) -> Logger.Metadata {
+        self.metadata(Logger.MetadataValue.metadata(from: additional))
+    }
 }
